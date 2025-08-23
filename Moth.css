@@ -1,0 +1,219 @@
+:root {
+  --bg-color: #f0f2f5;
+  --card-bg: #ffffff;
+  --text-color: #222;
+  --primary-color: #cc0000;
+  --primary-hover: #990000;
+  --heading-color: #990000;
+  --success-color: #28a745;
+  --error-color: #dc3545;
+  --input-border: #ccc;
+  --shadow-color: rgba(0,0,0,0.5);   /* Black shadow for light mode */
+}
+
+body.dark-mode {
+  --bg-color: #121212;
+  --card-bg: #1e1e1e;
+  --text-color: #f0f0f0;
+  --primary-color: #ff4444;
+  --primary-hover: #cc0000;
+  --heading-color: #ff6666;
+  --success-color: #4ade80;
+  --error-color: #f87171;
+  --input-border: #555;
+  --shadow-color: rgba(255,255,255,0.25);  /* White shadow for dark mode */
+}
+
+
+/* === Reset === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* === Body === */
+body {
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+/* === Header === */
+header {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+  color: white;
+  text-align: center;
+  padding: 3rem 1rem;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  box-shadow: var(--shadow-strong);
+}
+
+header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+header p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* === Sections / Container === */
+section, .container {
+  max-width: 1000px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: var(--card-bg);
+  border-radius: 20px;
+  box-shadow: var(--shadow-strong);
+  transition: transform 0.2s ease, background 0.3s, color 0.3s;
+}
+
+section:hover, .container:hover {
+  transform: translateY(-3px);
+}
+
+/* === Bio / Gallery === */
+.bio {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+}
+
+.bio img {
+  max-width: 280px;
+  border-radius: 16px;
+  box-shadow: var(--shadow-strong);
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.2rem;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: var(--shadow-strong);
+  transition: transform 0.3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* === Blog Posts === */
+.post {
+  margin-bottom: 2.5rem;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: var(--shadow-strong);
+  background: var(--card-bg);
+  transition: transform 0.2s ease, background 0.3s, color 0.3s;
+}
+
+.post:hover {
+  transform: translateY(-5px);
+}
+
+.post img {
+  max-width: 100%;
+  border-radius: 14px;
+  margin-bottom: 1.2rem;
+}
+
+/* === Headings === */
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--heading-color);
+}
+
+/* === Forms === */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding: 2rem;
+  background: var(--card-bg);
+  border-radius: 20px;
+  box-shadow: var(--shadow-strong);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  transition: background 0.3s, color 0.3s;
+}
+
+input, textarea {
+  padding: 1rem;
+  border: 1px solid var(--input-border);
+  border-radius: 12px;
+  font-size: 1rem;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: border 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 10px var(--primary-color);
+  outline: none;
+}
+
+button {
+  padding: 1rem;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+  box-shadow: var(--shadow-strong);
+}
+
+button:hover {
+  background: linear-gradient(135deg, var(--primary-hover), var(--primary-color));
+  transform: scale(1.03);
+}
+
+/* === Status message === */
+.status-message {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+/* Default subtle shadow */
+section, .container, .post, .gallery img, form, button {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* subtle default shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover shadow (dynamic based on theme) */
+section:hover, .container:hover,
+.post:hover,
+.gallery img:hover,
+button:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 45px var(--shadow-color); /* red/white dynamic */
+}
+
+/* Input & Textarea Focus Glow (optional) */
+input:focus, textarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 15px var(--primary-color);
+  outline: none;
+}
+
+
+.status-message.sending { color: var(--primary-color); }
+.status-message.success { color: var(--success-color); }
+.status-message.error { color: var(--error-color); }
