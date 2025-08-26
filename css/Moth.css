@@ -1,27 +1,31 @@
 :root {
   --bg-color: #f0f2f5;
   --card-bg: #ffffff;
-  --text-color: #222;
-  --primary-color: #cc0000;
+  --primary-color: #bb0900;
+    --secondary-color: #ff0000;
   --primary-hover: #990000;
   --heading-color: #990000;
+  --text-color: #000000;
   --success-color: #00ff00;
   --error-color: #ff0000;
   --input-border: #ccc;
-  --shadow-color: rgba(0,0,0,0.5);   /* Black shadow for light mode */
+  --shadow-color: rgba(0,0,0);   /* Black shadow for light mode */
+  --toggle: #000000;
 }
 
 body.dark-mode {
   --bg-color: #121212;
   --card-bg: #1e1e1e;
-  --text-color: #f0f0f0;
   --primary-color: #ff4444;
+  --secondary-color: #ff4453;
   --primary-hover: #cc0000;
   --heading-color: #ff6666;
+  --text-color: #ffffff;
   --success-color: #00ff00;
   --error-color: #ff0000;
   --input-border: #555;
-  --shadow-color: rgba(255,255,255,0.25);  /* White shadow for dark mode */
+  --shadow-color: rgba(255,255,255);  /* White shadow for dark mode */
+  --toggle: #ffffff
 }
 
 /* === Reset === */
@@ -46,28 +50,29 @@ header {
   text-align: center;
   padding: 2.5rem 1rem;
   background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
-  color: white;
+  color: #ffffff;
   border-bottom-left-radius: 40px;
   border-bottom-right-radius: 40px;
   box-shadow: 0 8px 20px var(--shadow-color);
+  max-height: 400px;
 }
 header h1 {
   font-size: 2.5rem;
   font-weight: bold;
   margin: 0.5rem 0;
-  color: white;
+  color: #ffffff;
 }
 header p {
   margin: 0.3rem 0 1rem;
   font-size: 1.1rem;
-  color: white;
+  color: #ffffff;
 }
 #dark-mode-toggle {
   margin: 0.5rem 0 1rem;
   padding: 0.6rem 1rem;
   border: none;
   border-radius: 8px;
-  background: #fff;
+  background: var(--toggle);
   color: var(--primary-color);
   font-weight: 600;
   cursor: pointer;
@@ -88,8 +93,27 @@ header p {
 }
 .quick-links-box:hover {
   transform: translateY(-3px) scale(1.01);
-  box-shadow: 0 20px 45px rgba(0,0,0,0.5); /* still black in both modes */
+  box-shadow: 0 20px 45px rgba(0,0,0); /* still black in both modes */
 }
+
+/* Logo */
+.logo {
+  max-height: 150px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 10px 45px var(--shadow-color));
+  transition: filter .3s ease, transform .3s ease;
+  margin-right: 875px;
+  margin-top: 50px;
+  position: absolute;
+  border-radius: 20px;
+}
+
+.logo:hover {
+  transform: translateY(-2px) scale(1.02);
+  filter: drop-shadow(0 20px 45px var(--shadow-color));
+}
+
 /* Links inside the box */
 .quick-links {
   display: flex;
@@ -113,7 +137,7 @@ header p {
 .quick-links .nav-link:hover {
   background: rgba(255,255,255,0.25);
   transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.4);  /* fixed black shadow */
+  box-shadow: 0 6px 18px rgba(0,0,0);  /* fixed black shadow */
 }
 /* === Sections / Container === */
 section, .container {
@@ -262,19 +286,6 @@ input:focus, textarea:focus {
 .status-message.success { color: var(--success-color); }
 .status-message.error { color: var(--error-color); }
 
-.logo {
-  max-height: 200px;
-  width: auto;
-  display: block;
-  filter: drop-shadow(0 10px 45px var(--shadow-color));
-  transition: filter .3s ease, transform .3s ease;
-}
-
-.logo:hover {
-  transform: translateY(-2px) scale(1.02);
-  filter: drop-shadow(0 20px 45px var(--shadow-color));
-}
-
 /* Make sure your shadow variable is set per theme */
 :root {
   --shadow-color: rgba(0, 0, 0, 0.4);   /* black shadow for light mode */
@@ -395,12 +406,7 @@ form button:hover {
   flex-direction: column;
   justify-content: space-between; /* keeps button pushed down */
   min-height: 320px;  /* adjust as needed */
-}
-
-.service-card:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 20px 45px var(--shadow-color);
-  border-color: var(--primary-color);
+  border-radius: 15px;
 }
 
 .service-card h3 {
@@ -474,3 +480,16 @@ body.dark-mode .service-icon .emoji {
   opacity: .95;
 }
 
+/* Why Choose Us */
+.reason-header {
+  text-align: center;
+  color: var(--secondary-color);
+}
+
+.reason-paragraph {
+  font-size: 17px;
+  position: relative;
+  font-weight: normal;
+  text-align: center;
+  color: var(--primary-color);
+}
