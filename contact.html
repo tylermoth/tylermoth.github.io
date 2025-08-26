@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Moth Security - Contact</title>
   <link rel="stylesheet" href="Moth.css" />
-  <title>Moth Security - Home</title>
 </head>
 <body>
 
@@ -26,36 +25,31 @@
   </div>
 </header>
 
-<section class="bio">
-  <div>
-    <h2>About Us</h2>
-    <p>
-      At Moth Security, our job is simple—keep you safe.  
-      Whether it’s looking after your business, making sure your events run smoothly,
-      or securing your peace of mind, we'll be there for you.
-      We take the risk so you don’t have to, with discretion you can trust.
-      No matter the situation, one thing never changes: we won’t ask, and we won’t tell.
-      Your safety is our mission, and your trust means everything to us.
-    </p>
-  </div>
+<section>
+  <h2>Send Us a Message</h2>
+  <form id="contact-form">
+    <input type="text" name="user_name" placeholder="Your Name" required>
+    <input type="email" name="user_email" placeholder="Your Email" required>
+    <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+    <button type="submit">Send</button>
+    <p id="form-status" class="status-message"></p>
+  </form>
 </section>
 
-<!-- NEW: Quick Links section
-<section class="links">
-  <h2>Quick Links</h2>
-  <div class="link-grid">
-    <a class="link-card" href="booking.html">📅 Booking</a>
-    <a class="link-card" href="services.html">🛡️ Services</a>
-    <a class="link-card" href="contact.html"> ✉️ Contact</a>
-  </div>
-</section> -->
-
+<!-- EmailJS -->
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
+  (function(){
+    // Your EmailJS public key
+    emailjs.init("EuQ36yumrNwgtE77Z");
+  })();
+
+  const form = document.getElementById('contact-form');
+  const statusMsg = document.getElementById('form-status');
   const toggle = document.getElementById('dark-mode-toggle');
   const logo = document.getElementById('brand-logo');
 
-  // Light = black logo (logo-light.png)
-  // Dark  = white logo (logo-dark.png)
+  // Theme + logo initial state (match index.html behavior)
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const saved = localStorage.getItem('dark-mode');
   const startDark = saved ? JSON.parse(saved) : prefersDark;
@@ -64,18 +58,32 @@
   logo.src = startDark ? 'logo-dark.png' : 'logo-light.png';
   toggle.textContent = startDark ? '☀️ Light Mode' : '🌙 Dark Mode';
 
+  // Toggle theme & logo
   toggle.addEventListener('click', () => {
     const isDark = document.body.classList.toggle('dark-mode');
     logo.src = isDark ? 'logo-dark.png' : 'logo-light.png';
     toggle.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
     localStorage.setItem('dark-mode', isDark);
   });
+
+  // Contact form (same service/template as index)
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    statusMsg.textContent = "Sending...";
+    statusMsg.className = "status-message sending";
+
+    emailjs.sendForm('service_tniimtl', 'template_0vxvx14', this)
+      .then(() => {
+        statusMsg.textContent = "Message sent successfully!";
+        statusMsg.className = "status-message success";
+        form.reset();
+      })
+      .catch(() => {
+        statusMsg.textContent = "Failed to send message. Please try again.";
+        statusMsg.className = "status-message error";
+      });
+  });
 </script>
 
 </body>
 </html>
-
-
-<!-- EuQ36yumrNwgtE77Z
-service_tniimtl
-template_0vxvx14 -->

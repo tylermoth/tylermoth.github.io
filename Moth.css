@@ -5,8 +5,8 @@
   --primary-color: #cc0000;
   --primary-hover: #990000;
   --heading-color: #990000;
-  --success-color: #28a745;
-  --error-color: #dc3545;
+  --success-color: #00ff00;
+  --error-color: #ff0000;
   --input-border: #ccc;
   --shadow-color: rgba(0,0,0,0.5);   /* Black shadow for light mode */
 }
@@ -15,11 +15,11 @@ body.dark-mode {
   --bg-color: #121212;
   --card-bg: #1e1e1e;
   --text-color: #f0f0f0;
-  --primary-color: #cc0000;
-  --primary-hover: #990000;
-  --heading-color: #990000;
-  --success-color: #4ade80;
-  --error-color: #f87171;
+  --primary-color: #ff4444;
+  --primary-hover: #cc0000;
+  --heading-color: #ff6666;
+  --success-color: #00ff00;
+  --error-color: #ff0000;
   --input-border: #555;
   --shadow-color: rgba(255,255,255,0.25);  /* White shadow for dark mode */
 }
@@ -39,26 +39,91 @@ body {
   color: var(--text-color);
   line-height: 1.6;
 }
-
-/* === Header === */
+ /* Header */
 header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2.5rem 1rem;
   background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
   color: white;
-  text-align: center;
-  padding: 3rem 1rem;
   border-bottom-left-radius: 40px;
   border-bottom-right-radius: 40px;
-  box-shadow: var(--shadow-strong);
+  box-shadow: 0 8px 20px var(--shadow-color);
 }
 
 header h1 {
-  font-size: 3rem;
-  font-weight: 700;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+  color: white;
 }
 
 header p {
-  font-size: 1.2rem;
-  opacity: 0.9;
+  margin: 0.3rem 0 1rem;
+  font-size: 1.1rem;
+  color: white;
+}
+
+#dark-mode-toggle {
+  margin: 0.5rem 0 1rem;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--primary-color);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#dark-mode-toggle:hover {
+  background: #f0f0f0;
+  transform: scale(1.05);
+}
+
+/* Quick links container box */
+.quick-links-box {
+  background: rgba(255,255,255,0.15); 
+  padding: 0.75rem 1.25rem;
+  border-radius: 12px;
+  margin-top: 1rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);  /* fixed black shadow */
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.quick-links-box:hover {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 20px 45px rgba(0,0,0,0.5); /* still black in both modes */
+}
+
+/* Links inside the box */
+.quick-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.quick-links .nav-link {
+  text-decoration: none;
+  font-weight: 600;
+  color: white;
+  padding: 0.4rem 0.9rem;
+  border-radius: 6px;
+  transition: 
+    background 0.3s ease, 
+    transform 0.2s ease, 
+    box-shadow 0.3s ease, 
+    color 0.3s ease;
+}
+
+/* Hover effect */
+.quick-links .nav-link:hover {
+  background: rgba(255,255,255,0.25);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);  /* fixed black shadow */
 }
 
 /* === Sections / Container === */
@@ -217,3 +282,215 @@ input:focus, textarea:focus {
 .status-message.sending { color: var(--primary-color); }
 .status-message.success { color: var(--success-color); }
 .status-message.error { color: var(--error-color); }
+
+.logo {
+  height: 200px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 10px 45px var(--shadow-color));
+  transition: filter .3s ease, transform .3s ease;
+}
+
+.logo:hover {
+  transform: translateY(-2px) scale(1.02);
+  filter: drop-shadow(0 20px 45px var(--shadow-color));
+}
+
+/* Make sure your shadow variable is set per theme */
+:root {
+  --shadow-color: rgba(0, 0, 0, 0.4);   /* black shadow for light mode */
+}
+
+body.dark-mode {
+  --shadow-color: rgba(255, 255, 255, 0.25); /* white shadow for dark mode */
+}
+/* Booking Section Base */
+section {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 700px;
+  box-shadow: 0 6px 20px var(--shadow-color);
+  transition: background 0.3s, color 0.3s;
+}
+
+section h2 {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  color: var(--heading-color);
+}
+
+/* Form Layout */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+form .row {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Inputs & Textareas */
+input, select, textarea {
+  background: var(--bg-color);
+  color: var(--text-color);
+  border: 1px solid var(--input-border);
+  border-radius: 10px;
+  padding: 0.9rem;
+  font-size: 1rem;
+  transition: border 0.3s, background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+/* Dark Mode Inputs */
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+  background: #1e1e1e; /* solid dark gray */
+  color: #f0f0f0;
+  border: 1px solid #444;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 8px var(--primary-color);
+  outline: none;
+}
+
+/* Button */
+form button {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+  color: #fff;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+form button:hover {
+  transform: scale(1.04);
+  background: linear-gradient(135deg, var(--primary-hover), var(--primary-color));
+}
+
+/* Status Messages */
+.status-message {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.status-message.sending { color: var(--primary-color); }
+.status-message.success { color: var(--success-color); }
+.status-message.error { color: var(--error-color); }
+
+/* Services intro card */
+.services-intro {
+  max-width: 900px;
+  margin: 3rem auto 1rem;
+  padding: 2rem;
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 6px 20px var(--shadow-color);
+}
+
+/* Services grid */
+.services-grid {
+  max-width: 900px;   /* was smaller, now wider */
+  margin: 1rem auto 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1rem;
+  padding: 0 1rem;
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* keeps button pushed down */
+  min-height: 320px;  /* adjust as needed */
+}
+
+.service-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 20px 45px var(--shadow-color);
+  border-color: var(--primary-color);
+}
+
+.service-card h3 {
+  margin: .5rem 0 0.5rem;
+  color: var(--heading-color);
+  font-size: 1.25rem;
+}
+
+.service-card p {
+  margin-bottom: 1rem;
+  opacity: .95;
+}
+
+/* Emoji & icons */
+.service-icon .emoji {
+  font-size: 1.6rem;
+  line-height: 1;
+  display: inline-block;
+  color: #000;
+  transition: color .3s ease;
+  margin-right: .35rem; /* if paired with text; here it's alone */
+}
+body.dark-mode .service-icon .emoji {
+  color: #fff;
+}
+
+/* CTA button */
+.service-card .cta {
+  display: inline-block;
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+  color: #fff;
+  padding: .65rem 1rem;
+  border-radius: 10px;
+  font-weight: 700;
+  transition: transform .2s ease, background .3s ease, box-shadow .3s;
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+.service-card .cta:hover {
+  transform: translateY(-2px) scale(1.03);
+  background: linear-gradient(135deg, var(--primary-hover), var(--primary-color));
+  box-shadow: 0 16px 36px var(--shadow-color);
+}
+
+/* FAQ */
+.services-faq {
+  max-width: 900px;
+  margin: 0 auto 3rem;
+  padding: 2rem;
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 6px 20px var(--shadow-color);
+}
+.services-faq details {
+  border: 1px solid var(--input-border);
+  border-radius: 10px;
+  padding: .9rem 1rem;
+  margin-bottom: .8rem;
+  background: var(--card-bg);
+  transition: border-color .3s;
+}
+.services-faq details[open] {
+  border-color: var(--primary-color);
+}
+.services-faq summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+.services-faq p {
+  margin-top: .5rem;
+  opacity: .95;
+}
+

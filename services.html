@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Moth Security - Services</title>
+  <link rel="stylesheet" href="Moth.css" />
+</head>
+<body>
+
+<header>
+  <img id="brand-logo" src="logo-light.png" alt="Moth Security Logo" class="logo">
+  <h1>Our Services</h1>
+  <p>Professional protection tailored to your needs.</p>
+  <button id="dark-mode-toggle">🌙 Dark Mode</button>
+
+  <!-- Quick Links with box wrapper (same pattern as index) -->
+  <div class="quick-links-box">
+    <nav class="quick-links">
+      <a class="nav-link" href="index.html">🏠 Home</a>
+      <a class="nav-link" href="booking.html">📅 Booking</a>
+      <a class="nav-link" href="contact.html">✉️ Contact</a>
+      <a class="nav-link" href="services.html">🛡️ Services</a>
+    </nav>
+  </div>
+</header>
+
+<section class="services-intro">
+  <h2>What We Offer</h2>
+  <p>
+    From private events to long-term corporate contracts, <strong>Moth Security</strong> delivers
+    discreet, reliable protection. Explore our core offerings below and book with confidence.
+  </p>
+</section>
+
+<section class="services-grid">
+  <!-- Service: Event Security -->
+  <article class="service-card">
+    <div class="service-icon"><span class="emoji">🎪</span></div>
+    <h3>Event Security</h3>
+    <p>
+      Crowd control, access points, VIP handling, and incident response for concerts,
+      festivals, and private gatherings.
+    </p>
+    <a class="cta" href="booking.html">Book Event Security</a>
+  </article>
+
+  <!-- Service: Corporate Security -->
+  <article class="service-card">
+    <div class="service-icon"><span class="emoji">🏢</span></div>
+    <h3>Corporate Security</h3>
+    <p>
+      Offices, campuses, and executive protection. Deterrence, monitoring, and
+      professional presence for your workforce.
+    </p>
+    <a class="cta" href="booking.html">Book Corporate Security</a>
+  </article>
+
+  <!-- Service: Personal Protection -->
+  <article class="service-card">
+    <div class="service-icon"><span class="emoji">🧍‍♂️</span></div>
+    <h3>Personal Protection</h3>
+    <p>
+      Low-profile bodyguard services, secure transport, route planning, and
+      risk assessment tailored to your lifestyle.
+    </p>
+    <a class="cta" href="booking.html">Book Personal Protection</a>
+  </article>
+
+  <!-- Service: Site / Patrol -->
+  <article class="service-card">
+    <div class="service-icon"><span class="emoji">🏗️</span></div>
+    <h3>Site / Patrol</h3>
+    <p>
+      Construction sites, warehouses, storefronts. Scheduled patrols and presence
+      to deter theft and trespass.
+    </p>
+    <a class="cta" href="booking.html">Book Site / Patrol</a>
+  </article>
+
+  <!-- Service: Custom Engagements -->
+  <article class="service-card">
+    <div class="service-icon"><span class="emoji">🧩</span></div>
+    <h3>Custom Engagements</h3>
+    <p>
+      Have a unique situation? We’ll scope a tailored plan that fits your needs with
+      the right team and coverage.
+    </p>
+    <a class="cta" href="booking.html">Book a Custom Plan</a>
+  </article>
+</section>
+
+<section class="services-faq">
+  <h2>FAQ</h2>
+  <details>
+    <summary>How far in advance should I book?</summary>
+    <p>For events, 2–4 weeks is ideal. For urgent requests, contact us, f we can help, we will.</p>
+  </details>
+  <details>
+    <summary>Do you operate outside Los Santos?</summary>
+    <p>Yes. Let us know the location in your booking request and we’ll confirm coverage.</p>
+  </details>
+  <details>
+    <summary>Are your agents licensed?</summary>
+    <p>All personnel meet local licensing and training requirements and operate under strict procedures.</p>
+  </details>
+</section>
+
+<script>
+  // Dark mode & logo swap (consistent with your other pages)
+  const toggle = document.getElementById('dark-mode-toggle');
+  const logo = document.getElementById('brand-logo');
+
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const saved = localStorage.getItem('dark-mode');
+  const startDark = saved ? JSON.parse(saved) : prefersDark;
+
+  document.body.classList.toggle('dark-mode', startDark);
+  logo.src = startDark ? 'logo-dark.png' : 'logo-light.png';
+  toggle.textContent = startDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+
+  toggle.addEventListener('click', () => {
+    const isDark = document.body.classList.toggle('dark-mode');
+    logo.src = isDark ? 'logo-dark.png' : 'logo-light.png';
+    toggle.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+    localStorage.setItem('dark-mode', isDark);
+  });
+</script>
+
+</body>
+</html>

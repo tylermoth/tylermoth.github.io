@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Moth Security - Booking</title>
+  <link rel="stylesheet" href="Moth.css" />
+</head>
+<body>
+
+<header>
+  <img id="brand-logo" src="logo-light.png" alt="Moth Security Logo" class="logo">
+  <h1>Book Moth Security</h1>
+  <p>Professional protection, on your schedule.</p>
+  <button id="dark-mode-toggle">🌙 Dark Mode</button>
+
+  <!-- Quick Links with box wrapper (same as index.html) -->
+  <div class="quick-links-box">
+    <nav class="quick-links">
+      <a class="nav-link" href="index.html">🏠 Home</a>
+      <a class="nav-link" href="booking.html">📅 Booking</a>
+      <a class="nav-link" href="contact.html">✉️ Contact</a>
+      <a class="nav-link" href="services.html">🛡️ Services</a>
+    </nav>
+  </div>
+</header>
+
+<section>
+  <h2>Request a Booking</h2>
+  <form id="booking-form">
+    <!-- Contact Info -->
+    <input type="text" name="client_name" placeholder="Your Full Name" required>
+    <input type="email" name="client_email" placeholder="Your Email" required>
+    <input type="tel" name="client_phone" placeholder="Your Phone (optional)" pattern="^[0-9+()\-.\s]{7,}$">
+
+    <!-- Service -->
+    <select name="service_type" required>
+      <option value="" disabled selected>Select a Service</option>
+      <option>Event Security</option>
+      <option>Corporate Security</option>
+      <option>Personal Protection</option>
+      <option>Site/Patrol</option>
+      <option>Other</option>
+    </select>
+
+    <!-- Date Range (no time) -->
+    <div class="row date-range">
+      <label class="date-field">
+        <input type="date" name="start_date" id="start_date" required>
+      </label>
+
+      <label class="date-field">
+        <input type="date" name="end_date" id="end_date" required>
+      </label>
+    </div>
+
+    <!-- Location & Notes -->
+    <input type="text" name="service_location" placeholder="Location / Address" required>
+    <textarea name="details" rows="5" placeholder="Tell us about the job (scope, hours, risks, headcount, etc.)" required></textarea>
+
+    <button type="submit">Submit Booking Request</button>
+    <p id="form-status" class="status-message"></p>
+  </form>
+</section>
+
+<!-- EmailJS (same CDN as on index) -->
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  (function(){
+    // Your EmailJS Public Key (same as index.html)
+    emailjs.init("EuQ36yumrNwgtE77Z");
+  })();
+
+  const toggle = document.getElementById('dark-mode-toggle');
+  const logo = document.getElementById('brand-logo');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const saved = localStorage.getItem('dark-mode');
+  const startDark = saved ? JSON.parse(saved) : prefersDark;
+
+  document.body.classList.toggle('dark-mode', startDark);
+  logo.src = startDark ? 'logo-dark.png' : 'logo-light.png';
+  toggle.textContent = startDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+
+  toggle.addEventListener('click', () => {
+    const isDark = document.body.classList.toggle('dark-mode');
+    logo.src = isDark ? 'logo-dark.png' : 'logo-light.png';
+    toggle.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+    localStorage.setItem('dark-mode', isDark);
+  });
+
+  // Booking form handling (EmailJS)
+  const form = document.getElementById('booking-form');
+  const statusMsg = document.getElementById('form-status');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    statusMsg.textContent = "Sending booking request...";
+    statusMsg.className = "status-message sending";
+
+    // Use your service id and a booking-specific template id
+    emailjs.sendForm('service_tniimtl', 'template_8eyyabb', this)
+      .then(() => {
+        statusMsg.textContent = "Thanks! Your booking request was sent. We'll be in touch soon.";
+        statusMsg.className = "status-message success";
+        form.reset();
+      })
+      .catch(() => {
+        statusMsg.textContent = "Couldn’t send your request. Please try again in a moment.";
+        statusMsg.className = "status-message error";
+      });
+  });
+</script>
+<script>
+  const startEl = document.getElementById('start_date');
+  const endEl = document.getElementById('end_date');
+
+  function clampEndMin() {
+    endEl.min = startEl.value || '';
+    if (endEl.value && startEl.value && endEl.value < startEl.value) {
+      endEl.value = startEl.value;
+    }
+  }
+  startEl.addEventListener('change', clampEndMin);
+  // set initial min to today
+  const today = new Date().toISOString().slice(0,10);
+  startEl.min = today;
+  endEl.min = today;
+        </script>
+    </body>
+</html>
