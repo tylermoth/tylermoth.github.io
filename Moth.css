@@ -24,7 +24,6 @@ body.dark-mode {
   --shadow-color: rgba(255,255,255,0.25);  /* White shadow for dark mode */
 }
 
-
 /* === Reset === */
 * {
   margin: 0;
@@ -52,20 +51,17 @@ header {
   border-bottom-right-radius: 40px;
   box-shadow: 0 8px 20px var(--shadow-color);
 }
-
 header h1 {
   font-size: 2.5rem;
   font-weight: bold;
   margin: 0.5rem 0;
   color: white;
 }
-
 header p {
   margin: 0.3rem 0 1rem;
   font-size: 1.1rem;
   color: white;
 }
-
 #dark-mode-toggle {
   margin: 0.5rem 0 1rem;
   padding: 0.6rem 1rem;
@@ -77,12 +73,10 @@ header p {
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease;
 }
-
 #dark-mode-toggle:hover {
   background: #f0f0f0;
   transform: scale(1.05);
 }
-
 /* Quick links container box */
 .quick-links-box {
   background: rgba(255,255,255,0.15); 
@@ -92,12 +86,10 @@ header p {
   box-shadow: 0 8px 24px rgba(0,0,0,0.4);  /* fixed black shadow */
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
-
 .quick-links-box:hover {
   transform: translateY(-3px) scale(1.01);
   box-shadow: 0 20px 45px rgba(0,0,0,0.5); /* still black in both modes */
 }
-
 /* Links inside the box */
 .quick-links {
   display: flex;
@@ -105,7 +97,6 @@ header p {
   flex-wrap: wrap;
   justify-content: center;
 }
-
 .quick-links .nav-link {
   text-decoration: none;
   font-weight: 600;
@@ -118,14 +109,12 @@ header p {
     box-shadow 0.3s ease, 
     color 0.3s ease;
 }
-
 /* Hover effect */
 .quick-links .nav-link:hover {
   background: rgba(255,255,255,0.25);
   transform: translateY(-3px) scale(1.05);
   box-shadow: 0 6px 18px rgba(0,0,0,0.4);  /* fixed black shadow */
 }
-
 /* === Sections / Container === */
 section, .container {
   max-width: 1000px;
@@ -136,11 +125,9 @@ section, .container {
   box-shadow: var(--shadow-strong);
   transition: transform 0.2s ease, background 0.3s, color 0.3s;
 }
-
 section:hover, .container:hover {
   transform: translateY(-3px);
 }
-
 /* === Bio / Gallery === */
 .bio {
   display: flex;
@@ -148,30 +135,25 @@ section:hover, .container:hover {
   gap: 2rem;
   align-items: center;
 }
-
 .bio img {
   max-width: 280px;
   border-radius: 16px;
   box-shadow: var(--shadow-strong);
 }
-
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.2rem;
 }
-
 .gallery img {
   width: 100%;
   border-radius: 16px;
   box-shadow: var(--shadow-strong);
   transition: transform 0.3s;
 }
-
 .gallery img:hover {
   transform: scale(1.05);
 }
-
 /* === Blog Posts === */
 .post {
   margin-bottom: 2.5rem;
@@ -181,17 +163,14 @@ section:hover, .container:hover {
   background: var(--card-bg);
   transition: transform 0.2s ease, background 0.3s, color 0.3s;
 }
-
 .post:hover {
   transform: translateY(-5px);
 }
-
 .post img {
   max-width: 100%;
   border-radius: 14px;
   margin-bottom: 1.2rem;
 }
-
 /* === Headings === */
 h2 {
   font-size: 2rem;
@@ -284,7 +263,7 @@ input:focus, textarea:focus {
 .status-message.error { color: var(--error-color); }
 
 .logo {
-  height: 200px;
+  height: 100px;
   width: auto;
   display: block;
   filter: drop-shadow(0 10px 45px var(--shadow-color));
