@@ -377,6 +377,7 @@ form button:hover {
   background: var(--card-bg);
   border-radius: 16px;
   box-shadow: 0 6px 20px var(--shadow-color);
+  text-align: center;
 }
 
 /* Services grid */
@@ -385,8 +386,8 @@ form button:hover {
   margin: 1rem auto 3rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1rem;
-  padding: 0 1rem;
+  gap: 3rem;
+  padding: 0 1.25rem;
 }
 
 .service-card {
@@ -433,7 +434,7 @@ body.dark-mode .service-icon .emoji {
   background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
   color: #fff;
   padding: .65rem 1rem;
-  border-radius: 10px;
+  border-radius: 25px;
   font-weight: 700;
   transition: transform .2s ease, background .3s ease, box-shadow .3s;
   box-shadow: 0 4px 12px var(--shadow-color);
@@ -450,7 +451,7 @@ body.dark-mode .service-icon .emoji {
   margin: 0 auto 3rem;
   padding: 2rem;
   background: var(--card-bg);
-  border-radius: 16px;
+  border-radius: 25px;
   box-shadow: 0 6px 20px var(--shadow-color);
 }
 .services-faq details {
