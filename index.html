@@ -10,10 +10,10 @@
 <body>
 
 <header>
-  <img id="brand-logo" src="logo-light.png" alt="Moth Security Logo" class="logo">
+  <img id="brand-logo" src="logo-light-transparent.png" alt="Moth Security Logo" class="logo">
   <h1>Moth Security</h1>
   <p>Don't ask, Don't tell.</p>
-  <h4><strong>EVERYTHING IS IN CITY ONLY</strong></h4>
+  <h4><strong>DPN</strong></h4>
   <button id="dark-mode-toggle">🌙 Dark Mode</button>
 
   <!-- Quick Links with box wrapper -->
@@ -41,33 +41,23 @@
   </div>
 </section>
 
-<!-- NEW: Quick Links section
-<section class="links">
-  <h2>Quick Links</h2>
-  <div class="link-grid">
-    <a class="link-card" href="booking.html">📅 Booking</a>
-    <a class="link-card" href="services.html">🛡️ Services</a>
-    <a class="link-card" href="contact.html"> ✉️ Contact</a>
-  </div>
-</section> -->
-
 <script>
   const toggle = document.getElementById('dark-mode-toggle');
   const logo = document.getElementById('brand-logo');
 
-  // Light = black logo (logo-light.png)
-  // Dark  = white logo (logo-dark.png)
+  // Light = black logo (logo-light-transparent.png)
+  // Dark  = white logo (logo-dark-transparent.png)
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const saved = localStorage.getItem('dark-mode');
   const startDark = saved ? JSON.parse(saved) : prefersDark;
 
   document.body.classList.toggle('dark-mode', startDark);
-  logo.src = startDark ? 'logo-dark.png' : 'logo-light.png';
+  logo.src = startDark ? 'logo-dark-transparent.png' : 'logo-light-transparent.png';
   toggle.textContent = startDark ? '☀️ Light Mode' : '🌙 Dark Mode';
 
   toggle.addEventListener('click', () => {
     const isDark = document.body.classList.toggle('dark-mode');
-    logo.src = isDark ? 'logo-dark.png' : 'logo-light.png';
+    logo.src = isDark ? 'logo-dark-transparent.png' : 'logo-light-transparent.png';
     toggle.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
     localStorage.setItem('dark-mode', isDark);
   });
